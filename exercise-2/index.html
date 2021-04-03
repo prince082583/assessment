@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Todo list App</title>
+      <link href='./dist/css/style.min.css' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+   </head>
+   <body>
+      <div class="container">
+         <section>
+         <div class="add-task">
+            <label id="new-task-label" for="new-task" class="new-task-label">
+            <b>Add Item</b>
+            </label>
+            <div class="add-input">
+            <input id="new-task" type="text" placeholder="Enter Item Name" autofocus>
+            <button class="btn-success">Add</button>
+            </div>
+            <span id="item-error" class="item-error">Item cannot be empty.</span>
+         </div>
+         <section>
+         <section>
+            <div class="incomplete-list">
+               <h3>
+                  <b>Todo</b>
+               </h3>
+               <ul id="incomplete-tasks">
+                 
+               </ul>
+            </div>
+         </section>
+         <section>
+            <div class="complete-list">
+               <h3>
+                  <b>Completed</b>
+               </h3>
+               <ul id="completed-tasks">
+                 
+               </ul>
+            </div>
+         </section>
+      </div>
+      <script src="./js/app.js"></script>
+   </body>
+</html>

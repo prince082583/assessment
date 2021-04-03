@@ -1,0 +1,95 @@
+/* Basic Style */
+@mixin smallWidth() {
+    width: 100% !important;
+  }
+  body {
+    background: #ffffff;
+    color: #333;
+    font-family: Lato, sans-serif;
+    display: flex;
+  }
+  
+  .container {
+    display: block;
+  
+    margin: 100px auto 0;
+    width: 600px;
+  
+    @media only screen and (max-width: 375px) {
+      @include smallWidth;
+    }
+  }
+  
+  ul {
+    margin: 0px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  li {
+    clear: both;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  
+  button {
+    display: inline-block;
+  
+    color: #ffffff;
+    padding: 0.8rem 1rem;
+    text-align: center;
+    text-decoration: none;
+  
+    border-radius: 4px;
+  
+    font-size: 1rem;
+    min-height: 48px;
+    position: relative;
+    margin: 0.5rem 0;
+    min-height: inherit;
+    cursor: pointer;
+  }
+  .btn-success {
+    background-color: green;
+    border: 3px solid green;
+    height: fit-content;
+  }
+  .btn-success:hover {
+    background-color: #055105;
+    border: 3px solid #055105;
+  }
+  .delete {
+    background-color: #e00000;
+    border: 2px solid #e00000;
+    padding: 0px 15px;
+    margin: 8px;
+    max-height: 50px;
+  }
+  .delete:hover {
+    background-color: #8e0a0a !important;
+    border: 2px solid #8e0a0a !important;
+  }
+  .edit {
+    background-color: orange;
+    border: 2px solid orange;
+    padding: 0px 15px;
+    max-height: 50px;
+  
+    margin: 8px;
+  }
+  .edit:hover {
+    background-color: #c58714;
+    border: 2px solid #c58714;
+  }
+  
+  button :hover {
+    color: #333;
+  }
+  .error-border {
+    border: 2px solid red !important;
+  }
+  

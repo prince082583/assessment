@@ -1,0 +1,78 @@
+<html>    
+    
+<head>    
+    <title> Users List </title>    
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>    
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>    
+      <script>
+
+          $(function () {
+           
+            $.get("https://5dc588200bbd050014fb8ae1.mockapi.io/assessment", function(res, status){
+                var data= res;
+                var source = $("#document-template").html();
+                Handlebars.registerHelper("prettifyDate", function(timestamp) {
+    return new Date(timestamp).toString('yyyy-MM-dd')
+});
+    var template = Handlebars.compile(source);
+   
+    var html = template({
+        apidata: data
+    });
+   
+    $('#DocumentResults').html(html)
+  });
+ 
+})
+function showDetails(id){
+    $("#userdetail-"+id).show();
+    $("#show-detail-"+id).hide();
+}
+function deleteUser(id){
+    if (!confirm("Do you want to delete")){
+      return false;
+    }
+    $.ajax({
+    url: 'https://5dc588200bbd050014fb8ae1.mockapi.io/assessment/'+id,
+    type: 'DELETE',
+    success: function(result) {
+       location.reload();
+    }
+});
+}
+ 
+      </script>
+</head>    
+
+    
+<div id="DocumentResults"></div>
+<script id="document-template" type="text/x-handlebars-template">
+    <ul  class="list img-list">
+        {{#each apidata}}
+         
+           <li>
+           
+                <div class="li-img">
+                    <img src="{{avatar}}" />
+                </div>
+                <div class="li-text">
+                    <h4 class="li-head">{{name}}</h4>
+                    <button id="show-detail-{{id}}" class="btn" onclick="showDetails({{id}})">View Detail</button>
+                    <div class="user-detail" id="userdetail-{{id}}">
+                    <p class="li-sub">Created Date:{{prettifyDate createdAt}}</p>
+                    <p class="li-sub">ID:{{id}}</p>
+                    </div>
+                </div>
+                <div class="delete-btn">
+                    <button class="btn btn-danger" onclick="deleteUser({{id}})">
+                      delete
+                    </button>
+                </div>
+           
+        </li>
+        {{/each}}
+        </ul>
+</script>   
+    
+</html>   
